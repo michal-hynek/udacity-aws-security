@@ -1,0 +1,7 @@
+source .env
+
+FREE_RECIPES_S3_BUCKET=`aws cloudformation describe-stacks --stack-name c3-s3 --query "Stacks[0].Outputs[?OutputKey=='BucketNameRecipesFree'].OutputValue" --output text --profile $AWS_PROFILE --region $REGION`
+SECRET_RECIPES_S3_BUCKET=`aws cloudformation describe-stacks --stack-name c3-s3 --query "Stacks[0].Outputs[?OutputKey=='BucketNameRecipesSecret'].OutputValue" --output text --profile $AWS_PROFILE --region $REGION`
+ALB_DNS=`aws cloudformation describe-stacks --stack-name c3-app --query "Stacks[0].Outputs[?OutputKey=='ApplicationURL'].OutputValue" --output text --profile $AWS_PROFILE --region $REGION`
+APP_EC2_IP=`aws cloudformation describe-stacks --stack-name c3-app --query "Stacks[0].Outputs[?OutputKey=='ApplicationInstanceIP'].OutputValue" --output text --profile $AWS_PROFILE --region $REGION`
+ATTACK_EC2_IP=`aws cloudformation describe-stacks --stack-name c3-app --query "Stacks[0].Outputs[?OutputKey=='AttackInstanceIP'].OutputValue" --output text --profile $AWS_PROFILE --region $REGION`

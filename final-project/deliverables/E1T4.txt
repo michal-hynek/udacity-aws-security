@@ -1,0 +1,21 @@
+Bad Practice 1
+==============
+Description
+-----------
+Web server instance is in a public subnet and allows all ingress traffic.  This increases the attack surface for the instance.  For example, the attacker can run port scans and find out there's an SSH port open which could be use to access the instance if it's not security properly or it runs an unpatched version with a known vulnerability.
+
+Remediation
+-----------
+Move the instance to the private subnet and update the security group so only the traffic from the application load balancer (ALB's security group) is allowed in.  The instance will need to use a NAT gateway to send back responses to users.  If SSH access is required, assign an EC2 instance role that will allow terminal access using session manager in AWS Systems Manager.
+
+Bad Practice 2
+==============
+Description
+-----------
+Buckets for free and secret recipes are publicly accessible which means that anybody who knows the URL can access them.  Secret recipes should only be accessible by privileged business users.  Furthermore, public access means anybody who knows the URL can upload and delete files to/from the bucket.
+
+Remediation
+-----------
+Attach a policy to the bucket that allows read access for the EC2 application instance role and deny access for everybody else.  We would also have to add write access for an application admin role to upload new recipes.
+
+Another improvement is to create a VPC endpoint for the EC2 instance to use to access the bucket which is faster and more secure because the traffic doesn't leave AWS network.
