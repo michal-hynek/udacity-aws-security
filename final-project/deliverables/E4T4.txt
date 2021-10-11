@@ -1,0 +1,12 @@
+What additional architectural change can be made to reduce the internet-facing attack surface of the web application instance?
+- Move the application instance to the private subnet, so it can only be accessible via the load balancer.
+- Better access control to the secret S3 bucket for privileged users.  The access could be limited by assigning a role to the bucket or defining a policy that restricts IPs that can access the bucket.
+
+Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket?
+Yes, VPC endpoints can be used to only allow resources in the VPC to access the bucket blocking the access from the internet.  We'd have to add an instance or another resource the privileged users would use to access the bucket because they couldn't access it directly anymore.  The resource would be responsible for verifying user credentials. 
+
+Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+No, existing data is not encrypted.
+
+The changes you made above were done through the console or CLI; describe the outcome if the original cloud formation templates are applied to this environment?
+If the templates haven't been changed since the last time it was applied, Clouformation would respond with "no changes detected".  However, the manual changes would be potentially reverted if we changed the templates have been updated because Cloudformation is not aware of the manual changes.  For example, SG rules added manually would be dropped when updating the security group.
