@@ -1,0 +1,18 @@
+Scan infrastructure as code templates
+-------------------------------------
+
+Terrascan - https://github.com/accurics/terrascan
+
+The tool can detect several kinds of least privilege violations such as EC2 instance that are wide open to public access (ports accessible from 0.0.0.0/0) or publicly available RDS instances.  The full list of policies is available at https://runterrascan.io/docs/policies/aws/
+
+Scan AMI's or containers for OS vulnerabilities
+-----------------------------------------------
+
+Application Docker images: Docker includes "docker scan" which can be used to scan images for vulnerabilities such as buffer overflow.
+AMIs: AWS Inspector can be used to scan instances running a particular AMI image.  It can be integrated to a pipeline by creating instance with the desired AMI and tagging the AMI once it's build (see https://aws.amazon.com/blogs/security/how-to-set-up-continuous-golden-ami-vulnerability-assessments-with-amazon-inspector/ for more details).  It can detect common vulnerabilities such as injection (SQL inject, etc.)
+
+
+Scan an AWS environment for cloud configuration vulnerabilities
+---------------------------------------------------------------
+
+AWS provides several different tools to detect configuration vulnerabilities such as AWS Config, AWS Security Hub, AWS Inspector, etc.
