@@ -1,0 +1,18 @@
+Amazon Inspector Findings
+=========================
+All findings are related to ports that are open to public which can be remidiated by updating the security group to only allow traffic on port 80.  The application instance can also be moved to the private subnet which means the port 80 would only be accessible from the application load balancer.
+
+Security Hub Findings
+=====================
+
+securityhub-s3-bucket-server-side-encryption-enabled
+----------------------------------------------------
+Enable server side encryptions for both S3 buckets for remediation.
+
+securityhub-s3-bucket-level-public-access-prohibited
+----------------------------------------------------
+Block public access on the S3 buckets for remediation.  The buckets should only be accessed by the application instance.
+
+securityhub-s3-bucket-logging-enabled
+-------------------------------------
+Enable accessing logging on the S3 buckets for remediation.

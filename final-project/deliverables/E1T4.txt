@@ -19,3 +19,5 @@ Remediation
 Attach a policy to the bucket that allows read access for the EC2 application instance role and deny access for everybody else.  We would also have to add write access for an application admin role to upload new recipes.
 
 Another improvement is to create a VPC endpoint for the EC2 instance to use to access the bucket which is faster and more secure because the traffic doesn't leave AWS network.
+
+The diagram suggests the privileged users access the S3 bucket directly; they should be accessing via the application instance which checks user's credentials.
