@@ -1,6 +1,6 @@
 What findings were detected related to the brute force attack?
 
-GuardDuty didn't find any attacks even after running Hydra for more then an hour (see screenshots).  I assume it was supposed to report UnauthorizedAccess:EC2/SSHBruteForce based on the documentation - https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-ug.pdf
+GuardDuty didn't find any attacks even after running Hydra for more then an hour and waiting for GuardDuty for couple hours (see screenshots).  I assume it was supposed to report UnauthorizedAccess:EC2/SSHBruteForce based on the documentation - https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-ug.pdf
 
 Research the AWS GuardDuty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information?
 
