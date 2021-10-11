@@ -16,3 +16,5 @@ Scan an AWS environment for cloud configuration vulnerabilities
 ---------------------------------------------------------------
 
 AWS provides several different tools to detect configuration vulnerabilities such as AWS Config, AWS Security Hub, AWS Inspector, etc.
+
+All the aforemntioned tools help detect different kinds of vulnaribilities that violate the principle of least privilege e.g. ports accessible by all IPs, publicly accessible S3 buckets, etc.
